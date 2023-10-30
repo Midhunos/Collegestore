@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Righteous&display=swap');
+
+
+header {
+    height:100vh;
+    min-height:400px;
+    background-size:cover;
+    background: linear-gradient(#CCFF90,#69F0AE);
+    background-image:url(https://images.unsplash.com/20/cambridge.JPG?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dW5pdmVyc2l0eXxlbnwwfHwwfHx8MA%3D%3D);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+
+}
+
+@media(max-width:986px) {
+
+    .navbar-collapse {
+
+        background:#ffffff ;
+        padding: 20px;
+    }
+}
+
+@media(max-width:600px){
+
+     header {
+
+        background-position: 20% 33%;
+     }
+}
+
+body {
+
+
+    line-height: 1.7;
+    color: #727272;
+    font-family: 'Poppins', sans-serif;
+   /* height: 2000px; */
+}
+
+
+
+h1,h2,h3,h4,h5,h6 {
+
+    font-weight: 500;
+    color: #000000;
+}
+
+.section {
+
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+img {
+
+    width: 100%;
+}
+
+
+
+
+.btn {
+
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 10px;
+    padding: 10px 30px;
+}
+
+.btn-barnd {
+
+    background-color: #1d58bf;
+    color: white;
+    border-color: #1d58bf;
+}
+
+.btn-barnd:hover {
+
+    background-color: #1d58bfe5;
+    border-color: #1d58bfe5;
+    color: white;
+}
+
+.white {
+
+    background-color: white;
+    border-color: white;
+    color: #000000;
+}
+
+.white:hover {
+
+    background-color: #ffffffd2;
+    border-color:#ffffffd2 ;
+    color: #000000;
+}
+
+/* index 2 */
+.title h1 {
+
+    letter-spacing: 0.5px;
+
+
+}
+.title span {
+
+    font-weight: lighter;
+}
+
+.title h4{
+ text-shadow: 2px 2px;
+
+}
+
+
+

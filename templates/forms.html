@@ -1,0 +1,178 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+
+
+{% endblock %}
+{% block content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="formbold-main-wrapper">
+
+  <div class="formbold-form-wrapper">
+      <h6>
+         Do not give them a candle to light the way, teach them how to make fire instead. That is the meaning of enlightenment.
+        </h6>
+
+    <img src="https://cdn.pixabay.com/photo/2016/03/26/22/21/books-1281581_1280.jpg">
+
+    <form method="POST">
+      {% csrf_token %}
+      <div class="formbold-form-title">
+
+        <h4 class="">Book here</h4>
+
+      </div>
+
+      <div class="formbold-input-flex">
+        <div>
+          <label  class="formbold-form-label">
+             {{ form.name.label_tag }}
+          </label>
+          {{ form.name }}
+        </div>
+        <div>
+          <label class="formbold-form-label"> {{ form.dob.label_tag }}
+          </label>
+         {{ form.dob }}
+
+        </div>
+      </div>
+
+      <div class="formbold-input-flex">
+        <div>
+          <label  class="formbold-form-label"> {{ form.age.label_tag }}</label>
+           {{ form.age }}
+        </div>
+        <div>
+          <label  class="formbold-form-label"> {{ form.gender.label_tag }}</label>
+
+          {{ form.gender }}
+
+        </div>
+      </div>
+        <div class="formbold-input-flex">
+        <div>
+          <label class="formbold-form-label">{{ form.mail_id.label_tag }}</label>
+        {{ form.mail_id }}
+        </div>
+        <div>
+          <label  class="formbold-form-label"> {{ form.phone_number.label_tag }}</label>
+          {{ form.phone_number }}
+        </div>
+      </div>
+
+      <div class="formbold-mb-3">
+        <label for="address" class="formbold-form-label">
+          {{ form.address.label_tag }}
+        </label>
+        <input
+          type="text"
+          name="address"
+          id="address"
+          class="formbold-form-input"
+        />
+      </div>
+
+      <div class="formbold-mb-3">
+        <label for="address2" class="formbold-form-label">
+          Street Address Line 2
+        </label>
+        <input
+          type="text"
+          name="address2"
+          id="address2"
+          class="formbold-form-input"
+        />
+      </div>
+
+      <div class="formbold-input-flex">
+        <div>
+          <label class="formbold-form-label"> {{ form.department.label_tag }} </label>
+       {{ form.department }}
+        </div>
+        <div>
+          <label  class="formbold-form-label">  {{ form.courses.label_tag }} </label>
+
+          <select id="id_courses" name="courses">
+    <option value="">-----</option>
+</select>
+        </div>
+      </div>
+
+      <div class="formbold-input-flex">
+        <div>
+          <label class="formbold-form-label">  {{ form.purpose.label_tag }} </label>
+        {{ form.purpose }}
+        </div>
+        <div>
+          <label  class="formbold-form-label"> {{ form.materials_provided.label_tag }} </label>
+
+            {% for checkbox in form.materials_provided %}
+        <label>{{ checkbox }} {{ checkbox.choice_label }}</label>
+    {% endfor %}
+        </div>
+      </div>
+
+
+
+      <button class="formbold-btn" type="submit">Confirm</button>
+
+      {% for msg in messages %}
+        <p>{{msg}}</p>
+      {% endfor %}
+    </form>
+  </div>
+</div>
+<div style="display:flex;justify-content:center;align-item:center;margin-bottom:12px;">
+  <button style="text-decoration:none;border:none;background-color:grey;">
+    <a href="index2" style="text-decoration:none;color:white;">BACK TO HOME PAGE</a>
+  </button>
+</div>
+
+
+
+  <script>
+    const departmentDropdown = document.getElementById("id_department");
+    const courseDropdown = document.getElementById("id_courses");
+
+    const coursesData = {
+        "1": ["choose","BBA", "BCom","BFM"],
+        "2":["choose","BSC.computer science","BCA","Cloud Computing Professional"],
+        "3":["choose","B.Tech in IT","B.Tech in civil","B.Tech in Mechanical",],
+        "4":["choose","BA English","BA in French","BA in Spanish"],
+        "5":["choose","Archaeologist","B.Ed in History of America","MA History"],
+    };
+
+    departmentDropdown.addEventListener("change", () => {
+        const selectedDepartment = departmentDropdown.value;
+        const courseOptions = coursesData[selectedDepartment] || [];
+
+
+        courseDropdown.innerHTML = "";
+
+
+        courseOptions.forEach((course) => {
+            const option = document.createElement("option");
+            option.text = course;
+            option.value = course;
+            courseDropdown.appendChild(option);
+        });
+    });
+</script>
+
+
+
+{% endblock %}
