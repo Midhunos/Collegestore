@@ -2,8 +2,10 @@ from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
-from .forms import OrderForm
-from .models import Department, Order
+from .forms import Orderform
+from .models import Department, Order, Courses
+
+
 
 
 # Create your views here.
@@ -16,7 +18,7 @@ def index2(request):
 
 def order_form(request):
     if request.method == 'POST':
-        form = OrderForm(request.POST,request.FILES)
+        form = Orderform(request.POST,request.FILES)
         if form.is_valid():
             name = form.cleaned_data['name']
             dob = form.cleaned_data['dob']
@@ -26,7 +28,7 @@ def order_form(request):
             mail_id = form.cleaned_data['mail_id']
             address = form.cleaned_data['address']
             department = form.cleaned_data['department']
-            course = form.cleaned_data['courses']
+            courses= form.cleaned_data['courses']
             purpose = form.cleaned_data['purpose']
             materials_provided = form.cleaned_data['materials_provided']
 
@@ -40,15 +42,29 @@ def order_form(request):
                 mail_id=mail_id,
                 address=address,
                 department=department,
-                course=course,
+                course=courses,
                 purpose=purpose,
                 materials_provided=', '.join(materials_provided),
             )
             order.save()
-            messages.info(request, "Thank you we will get back you soon")
+            messages.info(request, "Thank you,WE Will Get Back To you")
+
             return redirect("order_form")
+        else:
+            messages.info(request, "invaild Data")
+
+
+
+
 
 
     else:
-        form = OrderForm()
+        form = Orderform()
     return render(request,'forms.html',{'form': form})
+
+
+
+def load_courses(request):
+    department_id=request.GET.get("department")
+    courses=Courses.objects.filter(department_id=department_id)
+    return render(request,"form2.html",{"courses":courses})

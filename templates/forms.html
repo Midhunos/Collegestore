@@ -6,8 +6,7 @@
 
 {% endblock %}
 {% block content %}
-
-
+    <script src="https://unpkg.com/htmx.org@1.9.2"></script>
 
 
 
@@ -46,7 +45,9 @@
         <div>
           <label class="formbold-form-label"> {{ form.dob.label_tag }}
           </label>
-         {{ form.dob }}
+
+         {{ form.dob}}
+
 
         </div>
       </div>
@@ -75,41 +76,27 @@
       </div>
 
       <div class="formbold-mb-3">
-        <label for="address" class="formbold-form-label">
+        <label class="formbold-form-label">
           {{ form.address.label_tag }}
         </label>
-        <input
-          type="text"
-          name="address"
-          id="address"
-          class="formbold-form-input"
-        />
+       {{ form.address }}
       </div>
 
-      <div class="formbold-mb-3">
-        <label for="address2" class="formbold-form-label">
-          Street Address Line 2
-        </label>
-        <input
-          type="text"
-          name="address2"
-          id="address2"
-          class="formbold-form-input"
-        />
-      </div>
 
       <div class="formbold-input-flex">
         <div>
           <label class="formbold-form-label"> {{ form.department.label_tag }} </label>
        {{ form.department }}
-        </div>
-        <div>
-          <label  class="formbold-form-label">  {{ form.courses.label_tag }} </label>
 
-          <select id="id_courses" name="courses">
-    <option value="">-----</option>
-</select>
         </div>
+            <div>
+          <label class="formbold-form-label"> {{ form.courses.label_tag }} </label>
+       {{ form.courses }}
+
+        </div>
+      </div>
+         <div class="formbold-input-flex">
+
       </div>
 
       <div class="formbold-input-flex">
@@ -127,52 +114,42 @@
       </div>
 
 
-
+<div>
       <button class="formbold-btn" type="submit">Confirm</button>
 
-      {% for msg in messages %}
-        <p>{{msg}}</p>
-      {% endfor %}
+    </div>
+<div>
+
+</div>
+
     </form>
+      <br>
+    <div>
+        {% for msg in messages %}
+     <center><h5>{{msg}}</h5></center>
+   {% endfor %}
+    </div>
   </div>
 </div>
-<div style="display:flex;justify-content:center;align-item:center;margin-bottom:12px;">
-  <button style="text-decoration:none;border:none;background-color:grey;">
-    <a href="index2" style="text-decoration:none;color:white;">BACK TO HOME PAGE</a>
-  </button>
-</div>
+
+<!--<div class="two">-->
 
 
-
-  <script>
-    const departmentDropdown = document.getElementById("id_department");
-    const courseDropdown = document.getElementById("id_courses");
-
-    const coursesData = {
-        "1": ["choose","BBA", "BCom","BFM"],
-        "2":["choose","BSC.computer science","BCA","Cloud Computing Professional"],
-        "3":["choose","B.Tech in IT","B.Tech in civil","B.Tech in Mechanical",],
-        "4":["choose","BA English","BA in French","BA in Spanish"],
-        "5":["choose","Archaeologist","B.Ed in History of America","MA History"],
-    };
-
-    departmentDropdown.addEventListener("change", () => {
-        const selectedDepartment = departmentDropdown.value;
-        const courseOptions = coursesData[selectedDepartment] || [];
+<!--<form method="POST">-->
+<!--    {% csrf_token %}-->
+<!--    <label  class="formbold-form-label">-->
+<!--             {{ form.name.label_tag }}-->
+<!--          </label>-->
+<!--          {{ form.name }}-->
+<!--    {{form.as_p}}-->
+<!--    <button type="submit">submit</button>-->
 
 
-        courseDropdown.innerHTML = "";
-
-
-        courseOptions.forEach((course) => {
-            const option = document.createElement("option");
-            option.text = course;
-            option.value = course;
-            courseDropdown.appendChild(option);
-        });
-    });
-</script>
-
+<!--</form>-->
+<!--    </div>-->
+<!--{% for msg in messages %}-->
+<!--  {{msg}}-->
+<!--{% endfor %}-->
 
 
 {% endblock %}
